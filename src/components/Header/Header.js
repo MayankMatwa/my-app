@@ -15,8 +15,9 @@ import AdbIcon from "@mui/icons-material/Adb";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
+import Colors from "../../utils/Colors.json";
 
-const pages = ["Products", "Pricing", "Blog"];
+const pages = ["Products", "Favorites", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const Search = styled("div")(({ theme }) => ({
@@ -61,7 +62,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-function Header() {
+function Header({ mode }) {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -81,11 +82,18 @@ function Header() {
     };
 
     return (
-        <AppBar position="static">
+        <AppBar
+            position="static"
+            sx={{ bgcolor: Colors[mode]["headerBackgroundColor"] }}
+        >
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <AdbIcon
-                        sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+                        sx={{
+                            display: { xs: "none", md: "flex" },
+                            mr: 1,
+                            color: Colors[mode]["headerIconColor"],
+                        }}
                     />
                     <Typography
                         variant="h6"
@@ -98,7 +106,7 @@ function Header() {
                             fontFamily: "monospace",
                             fontWeight: 700,
                             letterSpacing: ".3rem",
-                            color: "inherit",
+                            color: Colors[mode]["headerTextColor"],
                             textDecoration: "none",
                         }}
                     >
@@ -119,7 +127,9 @@ function Header() {
                             onClick={handleOpenNavMenu}
                             color="inherit"
                         >
-                            <MenuIcon />
+                            <MenuIcon
+                                sx={{ color: Colors[mode]["headerIconColor"] }}
+                            />
                         </IconButton>
                         <Menu
                             id="menu-appbar"
@@ -152,7 +162,11 @@ function Header() {
                         </Menu>
                     </Box>
                     <AdbIcon
-                        sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
+                        sx={{
+                            display: { xs: "flex", md: "none" },
+                            mr: 1,
+                            color: Colors[mode]["headerIconColor"],
+                        }}
                     />
                     <Typography
                         variant="h5"
@@ -166,7 +180,7 @@ function Header() {
                             fontFamily: "monospace",
                             fontWeight: 700,
                             letterSpacing: ".3rem",
-                            color: "inherit",
+                            color: Colors[mode]["headerTextColor"],
                             textDecoration: "none",
                         }}
                     >
@@ -183,7 +197,11 @@ function Header() {
                             <Button
                                 key={page}
                                 onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: "white", display: "block" }}
+                                sx={{
+                                    my: 2,
+                                    color: Colors[mode]["headerTextColor"],
+                                    display: "block",
+                                }}
                             >
                                 {page}
                             </Button>
@@ -197,11 +215,18 @@ function Header() {
                     >
                         <Search>
                             <SearchIconWrapper>
-                                <SearchIcon />
+                                <SearchIcon
+                                    sx={{
+                                        color: Colors[mode]["headerIconColor"],
+                                    }}
+                                />
                             </SearchIconWrapper>
                             <StyledInputBase
                                 placeholder="Search…"
                                 inputProps={{ "aria-label": "search" }}
+                                sx={{
+                                    color: Colors[mode]["headerTextColor"],
+                                }}
                             />
                         </Search>
                     </Box>
@@ -213,8 +238,11 @@ function Header() {
                                 sx={{ p: 0 }}
                             >
                                 <Avatar
-                                    alt="Remy Sharp"
+                                    alt="Mayank Matwa"
                                     src="/static/images/avatar/2.jpg"
+                                    sx={{
+                                        color: Colors[mode]["headerTextColor"],
+                                    }}
                                 />
                             </IconButton>
                         </Tooltip>

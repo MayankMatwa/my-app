@@ -7,10 +7,17 @@ import Typography from "@mui/joy/Typography";
 import IconButton from "@mui/joy/IconButton";
 import Link from "@mui/joy/Link";
 import Favorite from "@mui/icons-material/Favorite";
+import Colors from "../../utils/Colors.json";
 
-function Cards({ card }) {
+function Cards({ card, mode }) {
     return (
-        <Card variant="outlined" sx={{ width: 320 }}>
+        <Card
+            variant="outlined"
+            sx={{
+                width: 320,
+                background: Colors[mode]["cardsBackgroundColor"],
+            }}
+        >
             <CardOverflow>
                 <AspectRatio ratio="2">
                     <img
@@ -24,7 +31,7 @@ function Cards({ card }) {
                     aria-label="Like minimal photography"
                     size="md"
                     variant="solid"
-                    color="danger"
+                    color={Colors[mode]["cardsFavBackgroundColor"]}
                     sx={{
                         position: "absolute",
                         zIndex: 2,
@@ -34,16 +41,36 @@ function Cards({ card }) {
                         transform: "translateY(50%)",
                     }}
                 >
-                    <Favorite />
+                    <Favorite
+                        sx={{ color: Colors[mode]["cardsFavIconColor"] }}
+                    />
                 </IconButton>
             </CardOverflow>
-            <Typography level="h2" sx={{ fontSize: "md", mt: 2 }}>
-                <Link href="#multiple-actions" overlay underline="none">
+            <Typography level="h2">
+                <Link
+                    href="#multiple-actions"
+                    overlay
+                    underline="none"
+                    sx={{
+                        fontSize: "md",
+                        mt: 2,
+                        color: Colors[mode]["cardsTitleColor"],
+                    }}
+                >
                     {card["title"]}
                 </Link>
             </Typography>
-            <Typography level="body2" sx={{ mt: 0.5, mb: 2 }}>
-                <Link href="#multiple-actions">{card["description"]}</Link>
+            <Typography level="body2">
+                <Link
+                    href="#multiple-actions"
+                    sx={{
+                        mt: 0.5,
+                        mb: 2,
+                        color: Colors[mode]["cardsDescriptionColor"],
+                    }}
+                >
+                    {card["description"]}
+                </Link>
             </Typography>
             <Divider inset="context" />
             <CardOverflow
@@ -53,21 +80,29 @@ function Cards({ card }) {
                     gap: 1.5,
                     py: 1.5,
                     px: "var(--Card-padding)",
-                    bgcolor: "background.level1",
+                    bgcolor: Colors[mode]["cardsBottomBackgroundColor"],
                 }}
             >
                 <Typography
                     level="body3"
-                    sx={{ fontWeight: "md", color: "text.secondary" }}
+                    sx={{
+                        fontWeight: "md",
+                        color: Colors[mode]["cardsViewCountColor"],
+                    }}
                 >
                     {card["viewCount"]} views
                 </Typography>
                 <Divider orientation="vertical" />
                 <Typography
                     level="body3"
-                    sx={{ fontWeight: "md", color: "text.secondary" }}
+                    sx={{
+                        fontWeight: "md",
+                        color: Colors[mode]["cardsLastOpenedTime"],
+                    }}
                 >
-                    {card["upload"]}
+                    {card["visited"].length !== 0
+                        ? "Last Visit : " + card["visited"]
+                        : "Read"}
                 </Typography>
             </CardOverflow>
         </Card>

@@ -16,56 +16,77 @@ import ListItemDecorator from "@mui/joy/ListItemDecorator";
 import ListItemButton from "@mui/joy/ListItemButton";
 import Typography from "@mui/joy/Typography";
 import Sheet from "@mui/joy/Sheet";
-import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import SendIcon from "@mui/icons-material/Send";
+import DarkModeRoundedIcon from "@mui/icons-material/DarkModeRounded";
+import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
+import Colors from "../../utils/Colors.json";
 
-function Footer() {
-    const [color, setColor] = React.useState("neutral");
+function Footer({ mode, setMode }) {
     return (
         <Sheet
             variant="solid"
-            color={color}
             invertedColors
             sx={{
-                ...(color !== "warning" && {
-                    bgcolor: `${color}.800`,
-                }),
+                ...{
+                    bgcolor: Colors[mode]["footerBackgroundColor"],
+                },
                 flexGrow: 1,
                 p: 2,
                 borderRadius: 0,
             }}
         >
-            <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+            <Box
+                sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 2,
+                }}
+            >
                 <IconButton
                     variant="soft"
                     size="sm"
                     onClick={() => {
-                        const colors = [
-                            "primary",
-                            "neutral",
-                            "danger",
-                            "info",
-                            "success",
-                            "warning",
-                        ];
+                        const modes = ["darkMode", "lightMode"];
 
-                        const nextColor = colors.indexOf(color);
-                        setColor(colors[nextColor + 1] ?? colors[0]);
+                        const nextColor = modes.indexOf(mode);
+                        setMode(modes[nextColor + 1] ?? modes[0]);
                     }}
                     sx={{ borderRadius: "50%" }}
                 >
-                    <img
-                        alt=""
-                        src="/static/branding/pricing/block-green.svg"
-                    />
+                    {mode === "darkMode" ? (
+                        <DarkModeRoundedIcon
+                            sx={{ color: Colors[mode]["footerIconColor"] }}
+                        />
+                    ) : (
+                        <LightModeRoundedIcon
+                            sx={{ color: Colors[mode]["footerIconColor"] }}
+                        />
+                    )}
                 </IconButton>
                 <Divider orientation="vertical" />
                 <IconButton variant="plain">
-                    <FacebookRoundedIcon />
+                    <LinkedInIcon
+                        sx={{ color: Colors[mode]["footerIconColor"] }}
+                        onClick={(event) =>
+                            window.open(
+                                "https://www.linkedin.com/in/mayank-matwa/",
+                                "_blank"
+                            )
+                        }
+                    />
                 </IconButton>
                 <IconButton variant="plain">
-                    <GitHubIcon />
+                    <GitHubIcon
+                        sx={{ color: Colors[mode]["footerIconColor"] }}
+                        onClick={(event) =>
+                            window.open(
+                                "https://github.com/Mayank378/",
+                                "_blank"
+                            )
+                        }
+                    />
                 </IconButton>
                 <Input
                     variant="soft"
@@ -74,10 +95,16 @@ function Footer() {
                     name="email"
                     endDecorator={
                         <Button variant="soft" aria-label="subscribe">
-                            <SendIcon />
+                            <SendIcon
+                                sx={{ color: Colors[mode]["footerIconColor"] }}
+                            />
                         </Button>
                     }
-                    sx={{ ml: "auto", display: { xs: "none", md: "flex" } }}
+                    sx={{
+                        ml: "auto",
+                        display: { xs: "none", md: "flex" },
+                        color: Colors[mode]["footerTextColor"],
+                    }}
                 />
             </Box>
             <Divider sx={{ my: 2 }} />
@@ -102,20 +129,29 @@ function Footer() {
                 >
                     <AspectRatio
                         ratio="21/9"
-                        minHeight={80}
+                        minHeight={180}
                         sx={{ flexBasis: { xs: 200, md: "initial" } }}
                     >
                         <img
-                            alt=""
-                            src="/static/blog/mui-product-comparison/ecosystem.png"
+                            alt="https://drive.google.com/file/d/1S9v9rr5RCXdcbFRdLsGcGzdmwPhC2Izn/view?usp=share_link"
+                            src="https://drive.google.com/thumbnail?id=1S9v9rr5RCXdcbFRdLsGcGzdmwPhC2Izn"
                         />
                     </AspectRatio>
                     <CardContent>
-                        <Typography level="body2">
-                            Intro to the MUI ecosystem
+                        <Typography
+                            level="body2"
+                            sx={{ color: Colors[mode]["footerTextColor"] }}
+                        >
+                            My Resume | Currently ASE-1
                         </Typography>
-                        <Typography level="body3" sx={{ mb: 0.5 }}>
-                            MUI blog
+                        <Typography
+                            level="body3"
+                            sx={{
+                                mb: 0.5,
+                                color: Colors[mode]["footerTextColor"],
+                            }}
+                        >
+                            Open to Work
                         </Typography>
                     </CardContent>
                 </Card>
@@ -126,56 +162,79 @@ function Footer() {
                     sx={{ flexGrow: 0, "--ListItem-radius": "8px" }}
                 >
                     <ListItem nested sx={{ width: { xs: "50%", md: 140 } }}>
-                        <ListSubheader>Sitemap</ListSubheader>
+                        <ListSubheader
+                            sx={{ color: Colors[mode]["footerTextColor"] }}
+                        >
+                            Sitemap
+                        </ListSubheader>
                         <List>
                             <ListItem>
-                                <ListItemButton>Services</ListItemButton>
+                                <ListItemButton
+                                    sx={{
+                                        color: Colors[mode]["footerTextColor"],
+                                    }}
+                                >
+                                    Services
+                                </ListItemButton>
                             </ListItem>
                             <ListItem>
-                                <ListItemButton>Blog</ListItemButton>
+                                <ListItemButton
+                                    sx={{
+                                        color: Colors[mode]["footerTextColor"],
+                                    }}
+                                >
+                                    Blog
+                                </ListItemButton>
                             </ListItem>
                             <ListItem>
-                                <ListItemButton>Contact us</ListItemButton>
+                                <ListItemButton
+                                    sx={{
+                                        color: Colors[mode]["footerTextColor"],
+                                    }}
+                                >
+                                    Contact us
+                                </ListItemButton>
                             </ListItem>
                         </List>
                     </ListItem>
                     <ListItem nested sx={{ width: { xs: "50%", md: 180 } }}>
-                        <ListSubheader>Product</ListSubheader>
+                        <ListSubheader
+                            sx={{ color: Colors[mode]["footerTextColor"] }}
+                        >
+                            Product
+                        </ListSubheader>
                         <List sx={{ "--ListItemDecorator-size": "32px" }}>
                             <ListItem>
-                                <ListItemButton>
+                                <ListItemButton
+                                    sx={{
+                                        color: Colors[mode]["footerTextColor"],
+                                    }}
+                                >
                                     <ListItemDecorator>
                                         <img
-                                            alt=""
-                                            src="/static/branding/product-core-dark.svg"
+                                            alt="Programming Language"
+                                            src="https://www.pngfind.com/pngs/m/348-3484461_png-file-svg-programming-language-icon-png-transparent.png"
                                             width="24"
+                                            height="26"
                                         />
                                     </ListItemDecorator>
-                                    MUI Core
+                                    Programming Language
                                 </ListItemButton>
                             </ListItem>
                             <ListItem>
-                                <ListItemButton>
+                                <ListItemButton
+                                    sx={{
+                                        color: Colors[mode]["footerTextColor"],
+                                    }}
+                                >
                                     <ListItemDecorator>
                                         <img
-                                            alt=""
-                                            src="/static/branding/product-advanced-dark.svg"
+                                            alt="CN"
+                                            src="https://drive.google.com/thumbnail?id=1yiSqXsG6HtiUlotxTXuIkEV1XYmrQjeS"
                                             width="24"
                                         />
                                     </ListItemDecorator>
-                                    MUI X
-                                </ListItemButton>
-                            </ListItem>
-                            <ListItem>
-                                <ListItemButton>
-                                    <ListItemDecorator>
-                                        <img
-                                            alt=""
-                                            src="/static/branding/product-toolpad-dark.svg"
-                                            width="24"
-                                        />
-                                    </ListItemDecorator>
-                                    MUI Toolpad
+                                    Computer Networks
                                     <Chip
                                         variant="soft"
                                         size="sm"
@@ -183,6 +242,9 @@ function Footer() {
                                             minHeight: 20,
                                             fontSize: "xs2",
                                             ml: "auto",
+                                            color: Colors[mode][
+                                                "footerTextColor"
+                                            ],
                                         }}
                                     >
                                         BETA
@@ -190,27 +252,88 @@ function Footer() {
                                 </ListItemButton>
                             </ListItem>
                             <ListItem>
-                                <ListItemButton>
+                                <ListItemButton
+                                    sx={{
+                                        color: Colors[mode]["footerTextColor"],
+                                    }}
+                                >
                                     <ListItemDecorator>
                                         <img
-                                            alt=""
-                                            src="/static/branding/product-designkits-dark.svg"
+                                            sx={{
+                                                borderRadius: "5",
+                                            }}
+                                            alt="OS"
+                                            src="https://drive.google.com/thumbnail?id=19kjdAsnN64oMJYBsw3-e84y-hwcuV07r"
                                             width="24"
                                         />
                                     </ListItemDecorator>
-                                    Design kits
+                                    Operating System
+                                    <Chip
+                                        variant="soft"
+                                        size="sm"
+                                        sx={{
+                                            minHeight: 20,
+                                            fontSize: "xs2",
+                                            ml: "auto",
+                                            color: Colors[mode][
+                                                "footerTextColor"
+                                            ],
+                                        }}
+                                    >
+                                        BETA
+                                    </Chip>
                                 </ListItemButton>
                             </ListItem>
                             <ListItem>
-                                <ListItemButton>
+                                <ListItemButton
+                                    sx={{
+                                        color: Colors[mode]["footerTextColor"],
+                                    }}
+                                >
                                     <ListItemDecorator>
                                         <img
-                                            alt=""
-                                            src="/static/branding/product-templates-dark.svg"
+                                            alt="DBMS"
+                                            src={
+                                                mode === "lightMode"
+                                                    ? "https://cdn-icons-png.flaticon.com/512/30/30659.png"
+                                                    : "https://cdn-icons-png.flaticon.com/512/666/666402.png"
+                                            }
                                             width="24"
                                         />
                                     </ListItemDecorator>
-                                    Templates
+                                    DBMS
+                                </ListItemButton>
+                            </ListItem>
+                            <ListItem>
+                                <ListItemButton
+                                    sx={{
+                                        color: Colors[mode]["footerTextColor"],
+                                    }}
+                                >
+                                    <ListItemDecorator>
+                                        <img
+                                            alt="OOps"
+                                            src="https://drive.google.com/thumbnail?id=1hTzlv5p4ot-zPxUGxgukYU9E-nxvA8Bo"
+                                            width="24"
+                                        />
+                                    </ListItemDecorator>
+                                    OOPS
+                                </ListItemButton>
+                            </ListItem>
+                            <ListItem>
+                                <ListItemButton
+                                    sx={{
+                                        color: Colors[mode]["footerTextColor"],
+                                    }}
+                                >
+                                    <ListItemDecorator>
+                                        <img
+                                            alt="DSA"
+                                            src="https://tshahab.com/wp-content/uploads/2022/08/data-structure.png"
+                                            width="24"
+                                        />
+                                    </ListItemDecorator>
+                                    DSA
                                 </ListItemButton>
                             </ListItem>
                         </List>
@@ -228,14 +351,20 @@ function Footer() {
                 <Typography
                     level="body2"
                     startDecorator={
-                        <Typography textColor="text.tertiary">by</Typography>
+                        <Typography textColor={Colors[mode]["footerTextColor"]}>
+                            by
+                        </Typography>
                     }
+                    sx={{ color: Colors[mode]["footerTextColor"] }}
                 >
-                    MAYANK
+                    MAYANK MATWA
                 </Typography>
 
-                <Typography level="body3" sx={{ ml: "auto" }}>
-                    Copyright 2022
+                <Typography
+                    level="body3"
+                    sx={{ ml: "auto", color: Colors[mode]["footerTextColor"] }}
+                >
+                    Copyright 2023
                 </Typography>
             </Box>
         </Sheet>

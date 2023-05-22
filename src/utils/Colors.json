@@ -1,0 +1,42 @@
+{
+    "darkMode": {
+        "headerBackgroundColor": "rgba(18,18,18,1)",
+        "headerTextColor": "white",
+        "headerIconColor":"white",
+        
+        "bodyBackgroundColor":"rgba(18,18,18,0.9)",
+
+        "cardsBackgroundColor":"rgba(0,0,18,0.9)",
+        "cardsBottomBackgroundColor":"rgba(0,0,19,1)",
+        "cardsFavBackgroundColor": "primary",
+        "cardsFavIconColor":"red",
+        "cardsTitleColor":"white",
+        "cardsDescriptionColor":"white",
+        "cardsViewCountColor":"white",
+        "cardsLastOpenedTime": "white",
+
+        "footerBackgroundColor": "rgba(18,18,18,1)",
+        "footerTextColor":"white",
+        "footerIconColor":"white"
+    },
+    "lightMode": {
+        "headerBackgroundColor": "rgba(171, 184, 195,1)",
+        "headerTextColor": "black",
+        "headerIconColor":"black",
+
+        "bodyBackgroundColor":"rgba(239, 242, 244,0.9)",
+
+        "cardsBackgroundColor":"rgba(171, 184, 195,0.9)",
+        "cardsBottomBackgroundColor":"rgba(171, 184, 196,1)",
+        "cardsFavBackgroundColor": "neutral",
+        "cardsFavIconColor":"white",
+        "cardsTitleColor":"black",
+        "cardsDescriptionColor":"black",
+        "cardsViewCountColor":"black",
+        "cardsLastOpenedTime": "black",
+
+        "footerBackgroundColor": "rgba(171, 184, 195,1)",
+        "footerTextColor":"black",
+        "footerIconColor":"black"
+    }
+}

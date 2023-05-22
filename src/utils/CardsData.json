@@ -1,0 +1,50 @@
+[
+    {
+      "key": 0,
+      "imageURL": "https://drive.google.com/thumbnail?id=1CYo9Bi68ZpUH3wtnjXOUrz_sNeKDRW8D",
+      "title": "Basic Programming Language",
+      "description": "C, C++, Java, Python, Ruby, JavaScript",
+      "viewCount": "1.2k",
+      "visited": "1 hour ago"
+    },
+    {
+      "key": 1,
+      "imageURL": "https://drive.google.com/thumbnail?id=1yiSqXsG6HtiUlotxTXuIkEV1XYmrQjeS",
+      "title": "CN",
+      "description": "Computer Networks",
+      "viewCount": "2.2k",
+      "visited": "2 hour ago"
+    },
+    {
+      "key": 2,
+      "imageURL": "https://drive.google.com/thumbnail?id=18xKhbMdcsI9J6BGEmdCgptEL_d6u8Nze",
+      "title": "OS",
+      "description": "Operating System",
+      "viewCount": "3.2k",
+      "visited": "3 hour ago"
+    },
+    {
+      "key": 3,
+      "imageURL":"https://drive.google.com/thumbnail?id=1HBmNKQNKAkIquiwHKdyHv8E63Aw1kG4o",
+      "title": "DBMS",
+      "description": "Database Management System",
+      "viewCount": "1.4k",
+      "visited": "4 hour ago"
+    },
+    {
+      "key": 4,
+      "imageURL":"https://drive.google.com/thumbnail?id=1eqBPyOtH9IFkyGzS2EEsZ8-ColThxJny",
+      "title": "OOPs",
+      "description": "Object Oriented Programming",
+      "viewCount": "1.2k",
+      "visited": ""
+    },
+    {
+      "key": 5,
+      "imageURL":"https://drive.google.com/thumbnail?id=1w9Jn-MjUsDv5WDn-4faZleh0WUPFKYO3",
+      "title": "DSA",
+      "description": "Data Structures and Algorithms",
+      "viewCount": "1.2k",
+      "visited": "1 June, 2023"
+    }
+  ]
